@@ -1,21 +1,20 @@
 #
 # FileName:     Makefile
 # Author: 		8ucchiman
-# CreatedDate:  2023-09-06 12:48:15
+# CreatedDate:  2023-09-07 12:13:44
 # LastModified: 2023-02-03 21:27:40 +0900
 # Reference: 	https://qiita.com/chibi929/items/b8c5f36434d5d3fbfa4a
+#               http://nw.tsuda.ac.jp/lec/arm64/mac_m1/
 # Description:	---
 #
 
 
-.PHONY: clean
+GCC=/usr/bin/gcc
+.PHONY=clean
 
-a.out: hello.o
-	ld hello.o
+sample2b.s: sample2b.c
+	${GCC} -O -S sample2b.c
 
-hello.o: hello.asm
-	nasm -felf64 hello.asm
 
 clean:
-	rm hello.o a.out
-
+	rm sample2b.s

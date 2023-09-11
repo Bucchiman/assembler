@@ -10,12 +10,12 @@
 
 .PHONY: clean
 
-a.out: hello.o
-	ld hello.o
+a.out: triangle.o
+	ld triangle.o
 
-hello.o: hello.asm
-	nasm -felf64 hello.asm
+triangle.o: triangle.asm
+	nasm -fmacho64 triangle.asm
 
 clean:
-	rm hello.o a.out
+	rm triangle.o a.out
 
