@@ -13,6 +13,10 @@
 run:
 	gcc add.s
 
+load: load.s
+	gcc $<		# 最初の依存ファイル
+	
+
 debug:
 	gdb a.out
 
