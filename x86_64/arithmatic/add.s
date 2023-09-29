@@ -5,6 +5,6 @@
 ;
 
         .global main
-main:                   ; label(C言語の関数にかなり近い)
+main:                   # label(C言語の関数にかなり近い)
         add $1, %rax
         ret
