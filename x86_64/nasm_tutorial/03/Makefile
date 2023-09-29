@@ -21,7 +21,7 @@ OBJS := $(addprefix $(OUTDIR)/,$(patsubst %.asm,%.o,$(SRCS)))
 CC = nasm
 CFLAGS = -f elf
 
-.PHONY: all clean
+.PHONY: all clean debug
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
@@ -29,6 +29,13 @@ $(TARGET): $(OBJS)
 
 $(OUTDIR)/%.o:%.asm
 	$(CC) $(CFLAGS) $^
+
+debug:
+	# https://www.reddit.com/r/asm/comments/swglu9/how_to_debug_nasm_with_gdb_some_debug_info/
+	nasm -f elf64 -g -F dwarf -o $(PROGNAME).o $(PROGNAME).asm
+	ld -o $(PROGNAME) $(PROGNAME).o
+	gdb $(PROGNAME)
+	
 
 clean:
 	rm -rf $(OBJS) $(TARGET)
